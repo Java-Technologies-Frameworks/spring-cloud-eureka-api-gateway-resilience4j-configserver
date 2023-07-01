@@ -1,0 +1,23 @@
+server:
+  port: 8989
+spring:
+  application:
+    name: GATEWAY-SERVICE
+
+  config:
+    import: configserver:http://localhost:9196
+
+  cloud:
+    gateway:
+      routes:
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order/**
+        - id: payment-service
+          uri: lb://PAYMENT-SERVICE
+          predicates:
+            - Path=/payment/**
+
+
+
