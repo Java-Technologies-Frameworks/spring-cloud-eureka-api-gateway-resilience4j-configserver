@@ -26,6 +26,6 @@ resilience4j:
   # real time we need add max 2s duration and max attempt 2-3 times
   retry:
     instances:
-      userService:
+      PAYMENT-SERVICE:
         max-attempts: 5
         wait-duration: 10s
