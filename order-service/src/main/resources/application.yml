@@ -40,7 +40,7 @@ resilience4j:
   # real time we need add max 2s duration and max attempt 2-3 times
   retry:
     instances:
-      userService:
+      ORDER-SERVICE:
         max-attempts: 6
         wait-duration: 10s
 
