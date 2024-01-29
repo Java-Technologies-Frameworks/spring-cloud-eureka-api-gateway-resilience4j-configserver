@@ -1,6 +1,6 @@
 spring:
   application:
-    name: CONFIG-SEVER
+    name: CONFIG-SERVER
   cloud:
     config:
       server:
