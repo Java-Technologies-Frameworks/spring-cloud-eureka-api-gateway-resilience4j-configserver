@@ -10,22 +10,22 @@ spring:
   config:
     import: configserver:http://localhost:9196
 
-resilience4j:
-  circuitbreaker:
-    instances:
-      PAYMENT-SERVICE:
-        register-health-indicator: true
-        event-consumer-buffer-size: 10
-        failure-rate-threshold: 40
-        minimum-number-of-calls: 3
-        automatic-transition-from-open-to-half-open-enabled: true
-        wait-duration-in-open-state: 10s
-        permitted-number-of-calls-in-half-open-state: 3
-        sliding-window-size: 10
-        sliding-window-type: COUNT_BASED
-  # real time we need add max 2s duration and max attempt 2-3 times
-  retry:
-    instances:
-      PAYMENT-SERVICE:
-        max-attempts: 5
-        wait-duration: 10s
+# resilience4j:
+#   circuitbreaker:
+#     instances:
+#       PAYMENT-SERVICE:
+#         register-health-indicator: true
+#         event-consumer-buffer-size: 10
+#         failure-rate-threshold: 40
+#         minimum-number-of-calls: 3
+#         automatic-transition-from-open-to-half-open-enabled: true
+#         wait-duration-in-open-state: 10s
+#         permitted-number-of-calls-in-half-open-state: 3
+#         sliding-window-size: 10
+#         sliding-window-type: COUNT_BASED
+#   # real time we need add max 2s duration and max attempt 2-3 times
+#   retry:
+#     instances:
+#       PAYMENT-SERVICE:
+#         max-attempts: 5
+#         wait-duration: 10s
