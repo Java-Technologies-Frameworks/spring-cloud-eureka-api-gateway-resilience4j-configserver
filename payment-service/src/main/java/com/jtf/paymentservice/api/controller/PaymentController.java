@@ -14,7 +14,7 @@ public class PaymentController {
     private PaymentService paymentService;
 
     @PostMapping("/doPayment")
-    @Retry(name = "PAYMENT-SERVICE", fallbackMethod = "paymentProcess")
+   // @Retry(name = "PAYMENT-SERVICE", fallbackMethod = "paymentProcess")
     public Payment doPayment(@RequestBody Payment payment) {
         return paymentService.doPayment(payment);
     }
@@ -26,13 +26,13 @@ public class PaymentController {
     }
 
     //fallback resilience4j method retry for doPayment() post method
-    public Payment paymentProcess(Exception ee) {
-        return new Payment(999, "success", "TXN12345", 123, 15000);
-    }
+    // public Payment paymentProcess(Exception ee) {
+    //     return new Payment(999, "success", "TXN12345", 123, 15000);
+    // }
 
-    //fallback resilience4j method retry for findPaymentHistoryByOrderId() GET method
-    @Retry(name = "PAYMENT-SERVICE", fallbackMethod = "findPaymentHistoryByOrderId")
-    public Payment findPaymentHistoryByOrderId(Exception exp){
-        return new Payment(999, "success", "TXN12345", 123, 15000);
-    }
+    // //fallback resilience4j method retry for findPaymentHistoryByOrderId() GET method
+    // @Retry(name = "PAYMENT-SERVICE", fallbackMethod = "findPaymentHistoryByOrderId")
+    // public Payment findPaymentHistoryByOrderId(Exception exp){
+    //     return new Payment(999, "success", "TXN12345", 123, 15000);
+    // }
 }
